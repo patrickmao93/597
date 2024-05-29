@@ -235,7 +235,8 @@ The cofactor of the subgroup H is $h = N/n$
 
 We have $n(hP) = 0$, this means that any $G \neq 0$ where $G = hP$ can be used as a generator of our subgroup because $nG = 0$
 
-So the process for finding a generator of our subgroup is just
+So the process for finding a generator of prime subgroup is just
 
 1. Choose a random point on the curve $P$ and compute $G = hP$
 2. If $G = 0$, start over again. Otherwise, $G$ is the generator we want.
+
