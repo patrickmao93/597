@@ -39,13 +39,13 @@ Groups with finite number of elements.
 
 The following Cayley table represents the group of integers mod 5 under addition
 
-|           | ==0== | ==1== | ==2== | ==3== | ==4== |
-| --------- | ----- | ----- | ----- | ----- | ----- |
-| ==**0**== | 0     | 1     | 2     | 3     | 4     |
-| ==**1**== | 1     | 2     | 3     | 4     | 0     |
-| ==**2**== | 2     | 3     | 4     | 0     | 1     |
-| ==**3**== | 3     | 4     | 0     | 1     | 2     |
-| ==**4**== | 4     | 0     | 1     | 2     | 3     |
+|       | **0** | **1** | **2** | **3** | **4** |
+| ----- | ----- | ----- | ----- | ----- | ----- |
+| **0** | 0     | 1     | 2     | 3     | 4     |
+| **1** | 1     | 2     | 3     | 4     | 0     |
+| **2** | 2     | 3     | 4     | 0     | 1     |
+| **3** | 3     | 4     | 0     | 1     | 2     |
+| **4** | 4     | 0     | 1     | 2     | 3     |
 
 The table cannot have duplicated elements in any row or column because if it does, then it's not a group anymore by either not having an associative operator or not having an inverse for every element.
 
@@ -107,6 +107,8 @@ Let $H$ be a subgroup of $G$, and $H=\{h_1,h_2,h_3,…\}$. Then for any choic
 #### Lagrange's Theorem
 
 Let $H$ be a subgroup of a finite group $G$, then $|H|$ divides $|G|$
+
+let $h = |G| / |H|$, then $h$ is the cofactor of $H$
 
 ### Fields
 
@@ -194,8 +196,8 @@ $\{(x,y)\in \mathbb{R} | y^2=x^3+ax+b, 4a^3+27b^2\neq0\}$
 Elliptic curves over finite fields
 $\{(x,y)\in (\mathbb{F}_p)^2 | y^2=x^3+ax+b \mod p, 4a^3+27b^2\neq O \mod p\}$
 
-> The set of curve points over $\mathbb{F}_p$ still form an abelian group
->
+> The set of curve points over $\mathbb{F}_p$ still form an abelian group. (No time to dig down into the proofs)
+
 ### Geometric Addition (GF)
 
 Line equation for point addition
@@ -210,3 +212,30 @@ $ax + by + c \equiv 0 \mod p$
 #### Algebraic Addition (GF)
 
 Exactly the same as the algebraic addition of curve points over real numbers except that every operation follows a mod.
+
+#### Determining The Group Order
+
+Schoof's algorithm. Too complicated, no time to dig down. The algorithm runs in polynomial time.
+
+### Cyclic Subgroups of Elliptic Curve Groups
+
+THe order of the cyclic subgroup is the smallest positive integer $n$ such that $nP = 0$.
+
+> By Lagrange Theorem, this order also divides the order of the base group.
+
+#### Method of Finding a Generator
+
+Let $N$ be the order of the base group $B$ (can be determined using Schoof's algorithm)
+
+Let $n$ be the order of the subgroup $H$ that we want (a divisor of the base group order, must be prime)
+
+Note that $NP = 0$ for any point $P$ on the curve (fermat's little theorem)
+
+The cofactor of the subgroup H is $h = N/n$
+
+We have $n(hP) = 0$, this means that any $G \neq 0$ where $G = hP$ can be used as a generator of our subgroup because $nG = 0$
+
+So the process for finding a generator of our subgroup is just
+
+1. Choose a random point on the curve $P$ and compute $G = hP$
+2. If $G = 0$, start over again. Otherwise, $G$ is the generator we want.
