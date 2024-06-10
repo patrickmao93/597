@@ -20,13 +20,13 @@ a group is a set with
 #### Notable Examples of Groups
 
 - Real numbers under addition is a abelian group
-    - identity: 0
-    - inverse of a: -a. Note that the inverse operation does not have to be computable by group laws, meaning we don't
+  - identity: 0
+  - inverse of a: -a. Note that the inverse operation does not have to be computable by group laws, meaning we don't
       need to use the binary operator to compute it. The only thing matters is that an inverse exists for every element.
 - Real numbers under multiplication is not a group because we cannot invert 0
 - Addition modulo prime is an abelian group
-    - identity: 0
-    - inverse of a: the additive inverse of a mod p is just some x such that a + x = 0 mod p, or simply p - a
+  - identity: 0
+  - inverse of a: the additive inverse of a mod p is just some x such that a + x = 0 mod p, or simply p - a
 
 #### Subgroups
 
@@ -48,7 +48,7 @@ Groups with finite number of elements.
 The following Cayley table represents the group of integers mod 5 under addition
 
 |       | **0** | **1** | **2** | **3** | **4** |
-|-------|-------|-------|-------|-------|-------|
+| ----- | ----- | ----- | ----- | ----- | ----- |
 | **0** | 0     | 1     | 2     | 3     | 4     |
 | **1** | 1     | 2     | 3     | 4     | 0     |
 | **2** | 2     | 3     | 4     | 0     | 1     |
@@ -141,12 +141,12 @@ A ring is a set with two binary operators such that
 
 - The trivial ring {0} under addition and multiplication
 - The set of all polynomials under addition and multiplication
-    - The identity is $\{0x^0\}$ for addition and $\{1x^0\}$ for multiplication
-    - The inverse under multiplication doesn't exist for a polynomial. We can't invert $x^2$ to get $x^{-2}$ because it
+  - The identity is $\{0x^0\}$ for addition and $\{1x^0\}$ for multiplication
+  - The inverse under multiplication doesn't exist for a polynomial. We can't invert $x^2$ to get $x^{-2}$ because it
       is not a polynomial
 - Square matrices of real numbers under addition and multiplication
-    - The multiplicative identity is just the identity matrix I
-    - Multiplicative inverse doesn't always exist because the determinent doesn't always = 0
+  - The multiplicative identity is just the identity matrix I
+  - Multiplicative inverse doesn't always exist because the determinent doesn't always = 0
 
 ## Fields
 
@@ -211,7 +211,7 @@ What if:
 First, determine the slope of the line defined by $P$ and $Q$:
 
 - if $P \neq Q, m = \frac{x_P - x_Q}{y_P - y_Q}$
-    - Since we define the line that pass through $P$ and $Q$ when $P = Q$ as a tangent to the elliptic curve, we can
+  - Since we define the line that pass through $P$ and $Q$ when $P = Q$ as a tangent to the elliptic curve, we can
       take the first derivative of the curve to get its slope:
 - if $P = Q, m = \frac{3x_{P}^2 + a}{2y_P}$, which is the first derivative of $y_P = \pm \sqrt{x_{P}^{3} + ax_P + b}$
 
@@ -337,4 +337,3 @@ Informal definition: A pairing is a bilinear map $e: G_1 \times G_2 \rightarrow 
 - $e(m, n_1 + n_2) = e(m, n_1) + e(m, n_2)$
 
 In the context of EC, pairing adds the "point multiplication" capability.
-
