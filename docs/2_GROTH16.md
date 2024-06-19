@@ -183,7 +183,15 @@ Even though we encrypt everything in EC points, if the preimage space is small, 
 
 The idea is to introducing some prover-known-only value into the computation the points A, B, and C in a way that does not disturb the balance of the equation.
 
-$[A]_1 = $
+$[A]_1 = [\alpha]_1 + \sum_{i=0}^{n}{a_i u_i(\tau G_1)} + r[\delta]_1$
+
+$[B]_2 = [\beta]_2 + \sum_{i=0}^{n}{a_i v_i(\tau G_2)} + s[\delta]_2$
+
+$[B]_1 = [\beta]_1 + \sum_{i=0}^{n}{a_i v_i(\tau G_1)} + s[\delta]_1$
+
+Note that there is an additional intermediate $[B]_1$ point we compute but in group 1 instead group 2
+
+$[C]_1 = \sum_{i=0}^{n}{a_i [\beta u_i(\tau G_1) + \alpha v_i(\tau G_1) + w_i(\tau G_1)]_1} + s[A]_1 + r[B]_1 - rs[\delta]_1$
 
 > **Interpretation** $r$ and $s$ is sampled by the prover not in the trusted setup phase because the veifier is the only one who shouldn't know the values.
 
@@ -243,9 +251,9 @@ sample random $\gamma$ and $\delta$ from the field, then compute $\gamma G_1$ an
 
 #### Compute A and B
 
-$[A]_1 = \alpha + \sum_{i=0}^{n}{a_i u_i(\tau G_1)}$
+$[A]_1 = \alpha + \sum_{i=0}^{n}{a_i u_i(\tau G_1)} + r\delta$
 
-$[B]_2 = \beta + \sum_{i=0}^{n}{a_i v_i(\tau G_2)}$
+$[B]_2 = \beta + \sum_{i=0}^{n}{a_i v_i(\tau G_2)} + s\delta$
 
 #### Compute $h(x)$, then C
 
@@ -253,7 +261,7 @@ $h(x) = \frac{\sum_{i=0}^{n}{a_i u_i(x)}\sum_{i=0}^{n}{a_i v_i(x)}}{t(x)}$
 
 $[h(\tau)t(\tau)]_1 = \sum_{i=0}^{deg(h)}{h_i \tau^i t(\tau G_1)}$
 
-$[C]_1 = \sum_{i=l+1}^{n}{a_i(\beta u_i(\tau G_1) + \alpha v_i(\tau G_1) + w_i(\tau G_1))}$
+$[C]_1 = \sum_{i=l+1}^{n}{a_i \delta^{-1}(\beta u_i(\tau G_1) + \alpha v_i(\tau G_1) + w_i(\tau G_1))} + s[A]_1 + r[B]_1 - rs[\delta]_1$
 
 $proof = ([A]_1, [B]_2, [C]_1)$
 
@@ -264,3 +272,12 @@ $[Pub]_1 = \sum_{i=0}^{l}{a_i\gamma^{-1}[\beta u_i(\tau G_1)} + \alpha v_i(\tau 
 $e([A]_1, [B]_2) = e([\alpha]_1, [\beta]_2) + e([Pub]_1, [\gamma]_2) + e([C]_1, [\delta]_2)$
 
 And accepts if the equality is true.
+
+### Reference Strings
+
+Reference strings here omits the EC group and integer field related items.
+
+Verifying key consists of:
+
+- The set of terms that handles the public part of the wirness: $\{[\beta u_i(x) + \alpha v_i(x) + w_i(x)]_1\}_{0}^{l}$
+- $[\gamma]_1$, $[\delta]_1$, $[\alpha \beta]_T$

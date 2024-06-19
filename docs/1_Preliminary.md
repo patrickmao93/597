@@ -184,8 +184,8 @@ The set of points on an elliptic curve form an abelian group under elliptic curv
 
 - The Identity Element is a "made up" point called "point at infinity". It is not even on the curve. The group that
   represents the EC just contains that point at infinity.
-- the**inverse**of a point 𝑃 is the one symmetric about the x-axis
-- **addition**is given by the following rule:given three aligned, non-zero points $P$, $Q$ and $R$, their sum is $P +
+- the **inverse** of a point 𝑃 is the one symmetric about the x-axis
+- **addition** is given by the following rule:given three aligned, non-zero points $P$, $Q$ and $R$, their sum is $P +
   Q + R = 0$ or $P + Q = -R$
 
 ![sum of three points](image1.png)
