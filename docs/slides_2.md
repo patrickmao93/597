@@ -26,8 +26,6 @@ Rank 1 Constraint System (R1CS)
 $\downarrow$
 QAP (polynomials)
 $\downarrow$
-Trusted setup $\rightarrow$ proving key, verifying key
-$\downarrow$
 Encrypted polynomial evaluation (with EC)
 $\downarrow$
 Polynomial identity test
